@@ -1,10 +1,13 @@
 package com.oliinyk.yaroslav.accounts.service.impl;
 
 import com.oliinyk.yaroslav.accounts.constants.AccountsConstants;
+import com.oliinyk.yaroslav.accounts.dto.AccountsDto;
 import com.oliinyk.yaroslav.accounts.dto.CustomerDto;
 import com.oliinyk.yaroslav.accounts.entity.Accounts;
 import com.oliinyk.yaroslav.accounts.entity.Customer;
 import com.oliinyk.yaroslav.accounts.exception.CustomerAlreadyExistsException;
+import com.oliinyk.yaroslav.accounts.exception.ResourceNotFoundException;
+import com.oliinyk.yaroslav.accounts.mapper.AccountsMapper;
 import com.oliinyk.yaroslav.accounts.mapper.CustomerMapper;
 import com.oliinyk.yaroslav.accounts.repository.AccountsRepository;
 import com.oliinyk.yaroslav.accounts.repository.CustomerRepository;
@@ -58,5 +61,23 @@ public class AccountsServiceImpl implements IAccountsService {
         newAccounts.setCreatedAt(LocalDateTime.now());
         newAccounts.setCreatedBy("Anonymous");
         return newAccounts;
+    }
+
+    /**
+     *
+     * @param mobileNumber
+     * @return
+     */
+    @Override
+    public CustomerDto fetchAccount(String mobileNumber) {
+        Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
+                () -> new ResourceNotFoundException("Customer", "mobileNumber", mobileNumber)
+        );
+        Accounts accounts = accountsRepository.findByCustomerId(customer.getCustomerId()).orElseThrow(
+                () -> new ResourceNotFoundException("Account", "customerId", customer.getCustomerId().toString())
+        );
+        CustomerDto customerDto = CustomerMapper.mapToCustomerDto(customer, new CustomerDto());
+        customerDto.setAccountsDto(AccountsMapper.mapToAccountsDto(accounts, new AccountsDto()));
+        return customerDto;
     }
 }
