@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+loans:
+  message: "Welcome to Bank loans related prod APIs"
+  contactDetails:
+    name: "John Doe - Product Owner (loans)"
+    email: "john-prod@bank.loans.com"
+  onCallSupport:
+    - (333) 888-1234
+    - (333) 999-5678

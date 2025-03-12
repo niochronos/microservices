@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+loans:
+  message: "Welcome to Bank loans related local APIs"
+  contactDetails:
+    name: "John Doe - Developer (loans)"
+    email: "john@bank.loans.com"
+  onCallSupport:
+    - (111) 444-1234
+    - (111) 555-5678

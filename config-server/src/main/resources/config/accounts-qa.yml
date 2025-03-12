@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+accounts:
+  message: "Welcome to Bank accounts related QA APIs"
+  contactDetails:
+    name: "John Doe - QA Lead (accounts)"
+    email: "john-qa@bank.accounts.com"
+  onCallSupport:
+    - (222) 666-1234
+    - (222) 777-5678

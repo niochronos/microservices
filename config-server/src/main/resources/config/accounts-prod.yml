@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+accounts:
+  message: "Welcome to Bank accounts related prod APIs"
+  contactDetails:
+    name: "John Doe - Product Owner (accounts)"
+    email: "john-prod@bank.accounts.com"
+  onCallSupport:
+    - (333) 888-1234
+    - (333) 999-5678

@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+loans:
+  message: "Welcome to Bank loans related QA APIs"
+  contactDetails:
+    name: "John Doe - QA Lead (loans)"
+    email: "john-qa@bank.loans.com"
+  onCallSupport:
+    - (222) 666-1234
+    - (222) 777-5678

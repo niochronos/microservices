@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+cards:
+  message: "Welcome to Bank cards related prod APIs"
+  contactDetails:
+    name: "John Doe - Product Owner (cards)"
+    email: "john-prod@bank.cards.com"
+  onCallSupport:
+    - (333) 888-1234
+    - (333) 999-5678
