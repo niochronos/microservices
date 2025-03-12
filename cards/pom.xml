@@ -110,7 +110,7 @@
 				<version>3.4.4</version>
 				<configuration>
 					<to>
-						<image>niochronos/${project.artifactId}:s4</image>
+						<image>niochronos/${project.artifactId}:s6</image>
 					</to>
 				</configuration>
 			</plugin>
