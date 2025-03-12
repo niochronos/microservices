@@ -4,10 +4,17 @@ spring:
   application:
     name: "config-server"
   profiles:
-    active: native
+    #active: native
+    active: git
   cloud:
     config:
       server:
-        native:
-          #search-locations: "classpath:/config"
-          search-locations: "file:///home//yaroslav//Documents//config"
+        #native:
+          ##search-locations: "classpath:/config"
+          #search-locations: "file:///home//yaroslav//Documents//config"
+        git:
+          uri: "https://github.com/niochronos/microservices-config.git"
+          default-label: main # git branch name
+          timeout: 5 # 5 seconds
+          clone-on-start: true
+          force-pull: true
