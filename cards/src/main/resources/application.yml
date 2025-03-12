@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: "cards"
+  profiles:
+    active: "prod"
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
@@ -17,21 +19,4 @@ spring:
         ddl-auto: update
       show-sql: true
   config:
-    import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-  profiles:
-    active:
-      - "default"
-
-build:
-  version: "3.0"
-
-cards:
-  message: "Welcome to Bank cards related local APIs"
-  contactDetails:
-    name: "John Doe - Developer (cards)"
-    email: "john@bank.cards.com"
-  onCallSupport:
-    - (111) 444-1234
-    - (111) 555-5678
+    import: "optional:configserver:http://localhost:8071/"
