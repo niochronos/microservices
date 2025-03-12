@@ -170,7 +170,7 @@ public class AccountsController {
     public ResponseEntity<String> getBuildInfo() {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(buildVersion);
+                .body("build.version: " + buildVersion);
     }
 
     @Operation(
