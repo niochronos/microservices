@@ -1,0 +1,19 @@
+//https://console.hookdeck.com/
+
+//Step 1: Install the Hookdeck CLI on your device
+tar -xvf hookdeck_X.X.X_linux_x86_64.tar.gz
+
+//Step 2: Login and start the CLI with those commands
+//hookdeck logout - execute in case some issues with login
+hookdeck login --cli-key 5smwn0h8tbhzb9md5p9e4uubfk7mpd6rpu0wrg7ko1gpcuh1hq
+
+//hookdeck listen [port] Source
+//hookdeck listen 8071 Source
+hookdeck listen 8071 Source --cli-path /monitor
+
+//Step 3: Keep an eye on your Events list to view your newest events
+
+
+
+//Send your HTTP request to the URL provided below
+https://hkdk.events/ey1b4mazgkot23
