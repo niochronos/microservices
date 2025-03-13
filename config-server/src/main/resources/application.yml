@@ -5,6 +5,11 @@ encrypt:
 spring:
   application:
     name: "config-server"
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
   profiles:
     active: native
     #active: git
@@ -12,8 +17,8 @@ spring:
     config:
       server:
         native:
-          search-locations: "classpath:/config"
-          #search-locations: "file:///home//yaroslav//Documents//config"
+          #search-locations: "classpath:/config"
+          search-locations: "file:///home//yaroslav//Documents//config"
         #git:
           #uri: "https://github.com/niochronos/microservices-config.git"
           #default-label: main # git branch name
