@@ -5,7 +5,7 @@ accounts:
   message: "Welcome to Bank accounts related prod APIs"
   contactDetails:
     name: "John Doe - Product Owner (accounts)"
-    email: "john-prod@bank.accounts.com"
+    email: "{cipher}5b92ffbd617b4c8c07d24d9ef4bffe6ad9a52a255d5104fac93ee9b5c4b974f9d48dca4cfac5ca7d8ad107aa613ab9cc"
   onCallSupport:
     - (333) 888-1234
     - (333) 999-5678
