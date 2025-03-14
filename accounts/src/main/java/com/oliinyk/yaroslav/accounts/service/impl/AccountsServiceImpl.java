@@ -51,7 +51,7 @@ public class AccountsServiceImpl implements IAccountsService {
     private Accounts createNewAccount(Customer customer) {
         Accounts newAccounts = new Accounts();
         newAccounts.setCustomerId(customer.getCustomerId());
-        long randomAccNumber = 100000000000L + new Random().nextInt(900000000);
+        long randomAccNumber = 1000000000L + new Random().nextInt(9000000);
 
         newAccounts.setAccountNumber(randomAccNumber);
         newAccounts.setAccountType(AccountsConstants.SAVINGS);
