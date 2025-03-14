@@ -10,7 +10,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
-      start_period: 10s
+      start_period: 5s
     extends:
       file: common-config.yml
       service: network-deploy-service
