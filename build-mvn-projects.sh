@@ -6,6 +6,7 @@ declare -a projects=(
     "../loans"
     "../cards"
     "../config-server"
+    "../eureka-server"
 )
 
 # Loop through each directory and run the commands

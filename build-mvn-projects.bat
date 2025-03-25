@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 :: Define project directories
-set projects= accounts ..\loans ..\cards ..\config-server
+set projects= accounts ..\loans ..\cards ..\config-server ../eureka-server
 
 :: Loop through each directory and run the commands
 for %%p in (%projects%) do (
