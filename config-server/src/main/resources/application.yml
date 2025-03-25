@@ -22,11 +22,11 @@ management:
 spring:
   application:
     name: "config-server"
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
+#  rabbitmq:
+#    host: "localhost"
+#    port: 5672
+#    username: "guest"
+#    password: "guest"
   profiles:
 #    active: native
     active: git
