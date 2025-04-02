@@ -2,10 +2,11 @@
 setlocal enabledelayedexpansion
 
 :: Define project directories
-set projects= accounts ..\loans ..\cards ..\config-server ../eureka-server
+set projects= accounts ..\loans ..\cards ..\config-server ../eureka-server ../gateway-server
 
 :: Loop through each directory and run the commands
 for %%p in (%projects%) do (
+    echo ---------------
     echo Building project in %%p
     cd %%p || exit /b 1
     mvn clean install -DskipTests=true || (
