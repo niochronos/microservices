@@ -32,3 +32,10 @@ info:
     name: "gateway-server"
     description: "Bank Gateway Server Application"
     version: "1.0.0"
+
+logging:
+  level:
+    com:
+      oliinyk:
+        yaroslav:
+          gateway_server: DEBUG
