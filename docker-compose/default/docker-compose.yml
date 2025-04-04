@@ -46,8 +46,21 @@ services:
 #      file: common-config.yml
 #      service: network-deploy-service
 
+  redis:
+    image: redis:7.4
+    container_name: redis-rate-limiter
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli ping | grep PONG" ]
+      timeout: 10s
+      retries: 10
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
+
   config-server:
-    image: niochronos/config-server:s9
+    image: niochronos/config-server:s10
     container_name: config-server-ms
     ports:
       - "8071:8071"
@@ -67,7 +80,7 @@ services:
       service: microservice-base-config
 
   eureka-server:
-    image: niochronos/eureka-server:s9
+    image: niochronos/eureka-server:s10
     container_name: eureka-server-ms
     ports:
       - "8070:8070"
@@ -90,7 +103,7 @@ services:
       service: microservice-base-config
 
   accounts:
-    image: niochronos/accounts:s9
+    image: niochronos/accounts:s10
     container_name: accounts-ms
     ports:
       - "8080:8080"
@@ -115,7 +128,7 @@ services:
       service: microservice-config-server-config
 
   loans:
-    image: niochronos/loans:s9
+    image: niochronos/loans:s10
     container_name: loans-ms
     ports:
       - "8090:8090"
@@ -140,7 +153,7 @@ services:
       service: microservice-config-server-config
 
 #  loans1:
-#    image: niochronos/loans:s9
+#    image: niochronos/loans:s10
 #    container_name: loans-ms1
 #    ports:
 #      - "8091:8090"
@@ -159,7 +172,7 @@ services:
 #      service: microservice-config-server-config
 
   cards:
-    image: niochronos/cards:s9
+    image: niochronos/cards:s10
     container_name: cards-ms
     ports:
       - "9000:9000"
@@ -184,7 +197,7 @@ services:
       service: microservice-config-server-config
 
   gateway-server:
-    image: niochronos/gateway-server:s9
+    image: niochronos/gateway-server:s10
     container_name: gateway-server-ms
     ports:
       - "8072:8072"
@@ -195,8 +208,14 @@ services:
         condition: service_healthy
       cards:
         condition: service_healthy
+      redis:
+        condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "gateway-server"
+      SPRING_DATA_REDIS_CONNECT-TIMEOUT: 2s
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_DATA_REDIS_TIMEOUT: 1s
     extends:
       file: common-config.yml
       service: microservice-config-server-config
