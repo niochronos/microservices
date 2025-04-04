@@ -69,6 +69,7 @@ public class LoansController {
             @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
             String mobileNumber
     ) {
+        logger.debug("Invoked method createLoan()");
         loansService.createLoan(mobileNumber);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -98,6 +99,7 @@ public class LoansController {
             @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
             @RequestParam String mobileNumber
     ) {
+        logger.debug("Invoked method fetchLoanDetails()");
         logger.debug("bank-correlation-id found: {}", correlationId);
         LoansDto loansDto = loansService.fetchLoan(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK).body(loansDto);
@@ -126,6 +128,7 @@ public class LoansController {
     })
     @PutMapping("/update")
     public ResponseEntity<ResponseDto> updateLoanDetails(@Valid @RequestBody LoansDto loansDto) {
+        logger.debug("Invoked method updateLoanDetails()");
         boolean isUpdated = loansService.updateLoan(loansDto);
         if(isUpdated) {
             return ResponseEntity
@@ -165,6 +168,7 @@ public class LoansController {
             @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
             String mobileNumber
     ) {
+        logger.debug("Invoked method deleteLoanDetails()");
         boolean isDeleted = loansService.deleteLoan(mobileNumber);
         if(isDeleted) {
             return ResponseEntity
@@ -193,6 +197,7 @@ public class LoansController {
     })
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildInfo() {
+        logger.debug("Invoked method getBuildInfo()");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body("build.version: " + buildVersion);
@@ -214,6 +219,7 @@ public class LoansController {
     })
     @GetMapping("/java-version")
     public ResponseEntity<String> getJavaVersion() {
+        logger.debug("Invoked method getJavaVersion()");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(environment.getProperty("JAVA_HOME"));
@@ -235,7 +241,7 @@ public class LoansController {
     })
     @GetMapping("/contact-info")
     public ResponseEntity<LoansContactInfoDto> getContactInfo() {
-        logger.debug("Invoked Loans contact info API");
+        logger.debug("Invoked method getContactInfo()");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(loansContactInfoDto);

@@ -65,6 +65,7 @@ public class AccountsController {
     )
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> create(@Valid @RequestBody CustomerDto customerDto) {
+        logger.debug("Invoked method create()");
         accountsService.createAccount(customerDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -86,6 +87,7 @@ public class AccountsController {
             @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number must be 10 digits")
             @RequestParam String mobileNumber
     ) {
+        logger.debug("Invoked method fetchAccountDetails()");
         CustomerDto customerDto = accountsService.fetchAccount(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK).body(customerDto);
     }
@@ -113,6 +115,7 @@ public class AccountsController {
     })
     @PutMapping("/update")
     public ResponseEntity<ResponseDto> updateAccountDetails(@Valid @RequestBody CustomerDto customerDto) {
+        logger.debug("Invoked method updateAccountDetails()");
         boolean isUpdated = accountsService.updateAccount(customerDto);
         if (isUpdated) {
             return ResponseEntity
@@ -148,6 +151,7 @@ public class AccountsController {
             @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number must be 10 digits")
             @RequestParam String mobileNumber
     ) {
+        logger.debug("Invoked method deleteAccountDetails()");
         boolean isDeleted = accountsService.deleteAccount(mobileNumber);
         if (isDeleted) {
             return ResponseEntity
@@ -206,11 +210,13 @@ public class AccountsController {
     @RateLimiter(name = "getJavaVersion", fallbackMethod = "getJavaVersionFallback")
     @GetMapping("/java-version")
     public ResponseEntity<String> getJavaVersion() {
+        logger.debug("Invoked method getJavaVersion()");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(environment.getProperty("JAVA_HOME"));
     }
     public ResponseEntity<String> getJavaVersionFallback(Throwable throwable) {
+        logger.debug("Invoked method getJavaVersionFallback()");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body("Java 17 (from Fallback)");
@@ -232,6 +238,7 @@ public class AccountsController {
     })
     @GetMapping("/contact-info")
     public ResponseEntity<AccountsContactInfoDto> getContactInfo() {
+        logger.debug("Invoked method getContactInfo()");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(accountsContactInfoDto);

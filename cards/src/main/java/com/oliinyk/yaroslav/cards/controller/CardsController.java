@@ -70,9 +70,12 @@ public class CardsController {
     }
     )
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createCard(@Valid @RequestParam
-                                                  @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
-                                                  String mobileNumber) {
+    public ResponseEntity<ResponseDto> createCard(
+            @Valid @RequestParam
+            @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
+            String mobileNumber
+    ) {
+        logger.debug("Invoked method createCard()");
         cardsService.createCard(mobileNumber);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -102,6 +105,7 @@ public class CardsController {
             @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
             @RequestParam String mobileNumber
     ) {
+        logger.debug("Invoked method fetchCardDetails()");
         logger.debug("bank-correlation-id found: {}", correlationId);
         CardsDto cardsDto = cardsService.fetchCard(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK).body(cardsDto);
@@ -130,6 +134,7 @@ public class CardsController {
     })
     @PutMapping("/update")
     public ResponseEntity<ResponseDto> updateCardDetails(@Valid @RequestBody CardsDto cardsDto) {
+        logger.debug("Invoked method updateCardDetails()");
         boolean isUpdated = cardsService.updateCard(cardsDto);
         if(isUpdated) {
             return ResponseEntity
@@ -164,9 +169,12 @@ public class CardsController {
             )
     })
     @DeleteMapping("/delete")
-    public ResponseEntity<ResponseDto> deleteCardDetails(@RequestParam
-                                                         @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
-                                                         String mobileNumber) {
+    public ResponseEntity<ResponseDto> deleteCardDetails(
+            @RequestParam
+            @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
+            String mobileNumber
+    ) {
+        logger.debug("Invoked method deleteCardDetails()");
         boolean isDeleted = cardsService.deleteCard(mobileNumber);
         if(isDeleted) {
             return ResponseEntity
@@ -195,6 +203,7 @@ public class CardsController {
     })
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildInfo() {
+        logger.debug("Invoked method getBuildInfo()");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body("build.version: " + buildVersion);
@@ -216,6 +225,7 @@ public class CardsController {
     })
     @GetMapping("/java-version")
     public ResponseEntity<String> getJavaVersion() {
+        logger.debug("Invoked method getJavaVersion()");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(environment.getProperty("JAVA_HOME"));
@@ -237,6 +247,7 @@ public class CardsController {
     })
     @GetMapping("/contact-info")
     public ResponseEntity<CardsContactInfoDto> getContactInfo() {
+        logger.debug("Invoked method getContactInfo()");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(cardsContactInfoDto);
