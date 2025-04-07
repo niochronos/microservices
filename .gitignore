@@ -4,5 +4,7 @@
 *.iml
 *.ipr
 
+**/.data/minio/
+
 ### VS Code ###
 .vscode/
