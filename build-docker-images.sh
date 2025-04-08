@@ -12,7 +12,7 @@ declare -a projects=(
 
 # Loop through each directory and run the commands
 for project in "${projects[@]}"; do
-    echo ---------------
+    echo --------------------------------------------------
     echo "Building project in $project"
     cd "$project" || { echo "Failed to navigate to $project"; exit 1; }
     mvn compile jib:dockerBuild || { echo "Build failed in $project"; exit 1; }

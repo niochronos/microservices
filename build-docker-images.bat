@@ -6,7 +6,7 @@ set projects= accounts ..\loans ..\cards ..\config-server ../eureka-server ../ga
 
 :: Loop through each directory and run the commands
 for %%p in (%projects%) do (
-    echo ---------------
+    echo --------------------------------------------------
     echo Building project in %%p
     cd %%p || exit /b 1
     mvn compile jib:dockerBuild || (
