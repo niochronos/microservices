@@ -10,7 +10,7 @@ declare -a images=(
     "gateway-server"
 )
 
-declare tag=":s12"
+declare tag=":s13"
 
 # Loop through each images and run the commands
 for image in "${images[@]}"; do
