@@ -70,7 +70,7 @@ public class GatewayServerApplication {
 						.circuitBreakerConfig(CircuitBreakerConfig.ofDefaults())
 						.timeLimiterConfig(
 								TimeLimiterConfig.custom()
-										.timeoutDuration(Duration.ofSeconds(5))
+										.timeoutDuration(Duration.ofSeconds(10))
 										.build()
 						).build()
 		);
