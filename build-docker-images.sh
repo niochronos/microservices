@@ -8,15 +8,12 @@ declare -a projects=(
     "../config-server"
     "../eureka-server"
     "../gateway-server"
+    "../message"
 )
 
 # Loop through each directory and run the commands
 for project in "${projects[@]}"; do
-    echo --------------------------------------------------
-    echo "Building project in $project"
+    echo " "
     cd "$project" || { echo "Failed to navigate to $project"; exit 1; }
     mvn compile jib:dockerBuild || { echo "Build failed in $project"; exit 1; }
-    echo "Successfully built project in $project"
 done
-
-echo "All projects built successfully!"

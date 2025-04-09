@@ -8,16 +8,18 @@ declare -a images=(
     "config-server"
     "eureka-server"
     "gateway-server"
+    "message"
 )
 
 declare tag=":s13"
 
 # Loop through each images and run the commands
 for image in "${images[@]}"; do
-    echo --------------------------------------------------
-    echo "Docker image push docker.io/niochronos/$image$tag"
-    docker image push docker.io/niochronos/"$image$tag" || { echo "Docker push failed $image"; exit 1; }
-    echo "Successfully pushed $image"
+    echo " "
+    echo "[ Docker image push docker.io/niochronos/$image$tag ]"
+    docker image push docker.io/niochronos/"$image$tag" || { echo "Docker push failed $image$tag"; exit 1; }
+    echo "[ Successfully pushed $image$tag ]"
 done
 
-echo "All images pushed successfully!"
+echo " "
+echo "[ All images with tag '$tag' pushed successfully! ]"
