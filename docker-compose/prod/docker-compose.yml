@@ -264,21 +264,21 @@ services:
       file: common-config.yml
       service: microservice-db-config
 
-  #  rabbit:
-  #    image: rabbitmq:4.0-management
-  #    hostname: rabbitmq
-  #    ports:
-  #      - "5672:5672"
-  #      - "15672:15672"
-  #    healthcheck:
-  #      test: rabbitmq-diagnostics check_port_connectivity
-  #      interval: 10s
-  #      timeout: 5s
-  #      retries: 10
-  #      start_period: 5s
-  #    extends:
-  #      file: common-config.yml
-  #      service: network-deploy-service
+  rabbitmq:
+    image: rabbitmq:4.0-management
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
 
   redis:
     image: redis:7.4
@@ -294,12 +294,12 @@ services:
       service: network-deploy-service
 
   config-server:
-    image: niochronos/config-server:s12
+    image: niochronos/config-server:s13
     container_name: config-server-ms
     ports:
       - "8071:8071"
     #    depends_on:
-    #      rabbit:
+    #      rabbitmq:
     #        condition: service_healthy
     healthcheck:
       test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
@@ -314,12 +314,12 @@ services:
       service: microservice-base-config
 
   eureka-server:
-    image: niochronos/eureka-server:s12
+    image: niochronos/eureka-server:s13
     container_name: eureka-server-ms
     ports:
       - "8070:8070"
     depends_on:
-      #      rabbit:
+      #      rabbitmq:
       #        condition: service_healthy
       config-server:
         condition: service_healthy
@@ -337,7 +337,7 @@ services:
       service: microservice-base-config
 
   accounts:
-    image: niochronos/accounts:s12
+    image: niochronos/accounts:s13
     container_name: accounts-ms
 #    ports:
 #      - "8080:8080"
@@ -347,6 +347,8 @@ services:
       config-server:
         condition: service_healthy
       eureka-server:
+        condition: service_healthy
+      rabbitmq:
         condition: service_healthy
     healthcheck:
       test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
@@ -358,12 +360,13 @@ services:
       SPRING_APPLICATION_NAME: "accounts"
       OTEL_SERVICE_NAME: "accounts"
       SPRING_DATASOURCE_URL: "jdbc:mysql://accountsdb:3306/accountsdb"
+      SPRING_RABBITMQ_HOST: "rabbitmq"
     extends:
       file: common-config.yml
       service: microservice-config-server-config
 
   loans:
-    image: niochronos/loans:s12
+    image: niochronos/loans:s13
     container_name: loans-ms
 #    ports:
 #      - "8090:8090"
@@ -389,7 +392,7 @@ services:
       service: microservice-config-server-config
 
   #  loans1:
-  #    image: niochronos/loans:s12
+  #    image: niochronos/loans:s13
   #    container_name: loans-ms1
   #    ports:
   #      - "8091:8090"
@@ -408,7 +411,7 @@ services:
   #      service: microservice-config-server-config
 
   cards:
-    image: niochronos/cards:s12
+    image: niochronos/cards:s13
     container_name: cards-ms
 #    ports:
 #      - "9000:9000"
@@ -434,7 +437,7 @@ services:
       service: microservice-config-server-config
 
   gateway-server:
-    image: niochronos/gateway-server:s12
+    image: niochronos/gateway-server:s13
     container_name: gateway-server-ms
     ports:
       - "8072:8072"
@@ -458,6 +461,19 @@ services:
     extends:
       file: common-config.yml
       service: microservice-config-server-config
+
+  message:
+    image: "niochronos/message:s13"
+    container_name: message-ms
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "message"
+      SPRING_RABBITMQ_HOST: "rabbitmq"
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
 
 networks:
   network_ms:
