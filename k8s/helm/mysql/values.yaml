@@ -123,7 +123,7 @@ auth:
   ## @param auth.rootPassword Password for the `root` user. Ignored if existing secret is provided
   ## ref: https://github.com/bitnami/containers/tree/main/bitnami/mysql#setting-the-root-password-on-first-run
   ##
-  rootPassword: ""
+  rootPassword: "root"
   ## @param auth.createDatabase Whether to create the .Values.auth.database or not
   ## ref: https://github.com/bitnami/containers/tree/main/bitnami/mysql#creating-a-database-on-first-run
   ##
@@ -131,7 +131,7 @@ auth:
   ## @param auth.database Name for a custom database to create
   ## ref: https://github.com/bitnami/containers/tree/main/bitnami/mysql#creating-a-database-on-first-run
   ##
-  database: "my_database"
+  database: "mysqldb"
   ## @param auth.username Name for a custom user to create
   ## ref: https://github.com/bitnami/containers/tree/main/bitnami/mysql#creating-a-database-user-on-first-run
   ##
@@ -586,7 +586,7 @@ primary:
   service:
     ## @param primary.service.type MySQL Primary K8s service type
     ##
-    type: ClusterIP
+    type: LoadBalancer
     ## @param primary.service.ports.mysql MySQL Primary K8s service port
     ## @param primary.service.ports.mysqlx MySQL Primary K8s service mysqlx port
     ##
