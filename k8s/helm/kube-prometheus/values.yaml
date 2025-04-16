@@ -1387,8 +1387,8 @@ prometheus:
   ## @param prometheus.additionalScrapeConfigs.internal.jobList A list of Prometheus scrape jobs
   ##
   additionalScrapeConfigs:
-    enabled: false
-    type: external
+    enabled: true
+    type: internal
     external:
       ## Name of the secret that Prometheus should use for the additional scrape configuration
       ##
@@ -1397,7 +1397,62 @@ prometheus:
       ##
       key: ""
     internal:
-      jobList: []
+      jobList: [
+        {
+          "job_name": "config-server",
+          "metrics_path": "/actuator/prometheus",
+          "static_configs": [
+            {
+              "targets": ["config-server:8071"]
+            }
+          ]
+        },
+        {
+          "job_name": "eureka-server",
+          "metrics_path": "/actuator/prometheus",
+          "static_configs": [
+            {
+              "targets": ["eureka-server:8070"]
+            }
+          ]
+        },
+        {
+          "job_name": "accounts",
+          "metrics_path": "/actuator/prometheus",
+          "static_configs": [
+            {
+              "targets": ["accounts:8080"]
+            }
+          ]
+        },
+        {
+          "job_name": "loans",
+          "metrics_path": "/actuator/prometheus",
+          "static_configs": [
+            {
+              "targets": ["loans:8090"]
+            }
+          ]
+        },
+        {
+          "job_name": "cards",
+          "metrics_path": "/actuator/prometheus",
+          "static_configs": [
+            {
+              "targets": ["cards:9000"]
+            }
+          ]
+        },
+        {
+          "job_name": "gateway-server",
+          "metrics_path": "/actuator/prometheus",
+          "static_configs": [
+            {
+              "targets": ["gateway-server:8072"]
+            }
+          ]
+        }
+      ]
   ## Enable additional Prometheus alert relabel configs that are managed externally to this chart
   ## Note that the prometheus will fail to provision if the correct secret does not exist.
   ## @param prometheus.additionalAlertRelabelConfigsExternal.enabled Enable additional Prometheus alert relabel configs that are managed externally to this chart
