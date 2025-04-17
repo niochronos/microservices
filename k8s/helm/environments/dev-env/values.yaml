@@ -1,5 +1,5 @@
 global:
-  configMapName: bank_dev-configmap
+  configMapName: bankdev-configmap
   activeProfile: default
   configServerURL: configserver:http://config-server:8071/
   eurekaServerURL: http://eureka-server:8070/eureka/
