@@ -101,7 +101,7 @@ services:
       service: network-deploy-service
 
   config-server:
-    image: niochronos/config-server:s14
+    image: niochronos/config-server:s17wm
     container_name: config-server-ms
     ports:
       - "8071:8071"
@@ -121,7 +121,7 @@ services:
       service: microservice-base-config
 
   eureka-server:
-    image: niochronos/eureka-server:s14
+    image: niochronos/eureka-server:s17wm
     container_name: eureka-server-ms
     ports:
       - "8070:8070"
@@ -144,7 +144,7 @@ services:
       service: microservice-base-config
 
   accounts:
-    image: niochronos/accounts:s14
+    image: niochronos/accounts:s17wm
     container_name: accounts-ms
 #    ports:
 #      - "8080:8080"
@@ -173,7 +173,7 @@ services:
       service: microservice-config-server-config
 
   loans:
-    image: niochronos/loans:s14
+    image: niochronos/loans:s17wm
     container_name: loans-ms
 #    ports:
 #      - "8090:8090"
@@ -198,7 +198,7 @@ services:
       service: microservice-config-server-config
 
   #  loans1:
-  #    image: niochronos/loans:s14
+  #    image: niochronos/loans:s17wm
   #    container_name: loans-ms1
   #    ports:
   #      - "8091:8090"
@@ -217,7 +217,7 @@ services:
   #      service: microservice-config-server-config
 
   cards:
-    image: niochronos/cards:s14
+    image: niochronos/cards:s17wm
     container_name: cards-ms
 #    ports:
 #      - "9000:9000"
@@ -242,7 +242,7 @@ services:
       service: microservice-config-server-config
 
   gateway-server:
-    image: niochronos/gateway-server:s14
+    image: niochronos/gateway-server:s17wm
     container_name: gateway-server-ms
     ports:
       - "8072:8072"
@@ -267,7 +267,7 @@ services:
       service: microservice-config-server-config
 
   message:
-    image: "niochronos/message:s14"
+    image: "niochronos/message:s17wm"
     container_name: message-ms
 #    depends_on:
 #      rabbitmq:
