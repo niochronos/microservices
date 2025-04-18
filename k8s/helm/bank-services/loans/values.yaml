@@ -10,7 +10,7 @@ replicaCount: 1
 
 image:
   repository: niochronos/loans
-  tag: s14
+  tag: s17wm
 
 containerPort: 8090
 

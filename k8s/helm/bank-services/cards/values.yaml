@@ -10,7 +10,7 @@ replicaCount: 1
 
 image:
   repository: niochronos/cards
-  tag: s14
+  tag: s17wm
 
 containerPort: 9000
 
