@@ -33,7 +33,3 @@ services:
       SPRING_PROFILES_ACTIVE: prod
       SPRING_CONFIG_IMPORT: "configserver:http://config-server:8071/"
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eureka-server:8070/eureka/"
-      JAVA_TOOL_OPTIONS: "-javaagent:/app/libs/opentelemetry-javaagent-2.11.0.jar"
-      OTEL_EXPORTER_OTLP_ENDPOINT: http://tempo:4318
-      OTEL_METRICS_EXPORTER: none
-      OTEL_LOGS_EXPORTER: none
