@@ -81,7 +81,7 @@
 				<version>3.4.4</version>
 				<configuration>
 					<to>
-						<image>niochronos/${project.artifactId}:s14</image>
+						<image>niochronos/${project.artifactId}:s17wm</image>
 					</to>
 				</configuration>
 			</plugin>

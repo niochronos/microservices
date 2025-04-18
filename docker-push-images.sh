@@ -11,7 +11,7 @@ declare -a images=(
     "message"
 )
 
-declare tag=":s14"
+declare tag=":s17wm"
 
 # Loop through each images and run the commands
 for image in "${images[@]}"; do
