@@ -24,6 +24,6 @@ profile_enabled: true
 config_enabled: true
 eureka_enabled: true
 resouceserver_enabled: false
-otel_enabled: true
+otel_enabled: false
 kafka_enabled: false
 dataSource_enabled: true
