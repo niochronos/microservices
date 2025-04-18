@@ -27,3 +27,4 @@ resouceserver_enabled: false
 otel_enabled: false
 kafka_enabled: false
 dataSource_enabled: true
+redis_enabled: false

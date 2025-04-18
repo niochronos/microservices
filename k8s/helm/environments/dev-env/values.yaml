@@ -10,3 +10,4 @@ global:
   otelLogsExporter: none
   kafkaBrokerURL: kafka-controller-0.kafka-controller-headless.default.svc.cluster.local:9092
   dataSourceUrl: "jdbc:mysql://mysql:3306/mysqldb"
+  dataRedisHost: redis-master.default.svc.cluster.local

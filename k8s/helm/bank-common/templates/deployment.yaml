@@ -92,5 +92,12 @@ spec:
               name: {{ .Values.global.configMapName }}
               key: SPRING_DATASOURCE_URL
         {{- end }}
+        {{- if .Values.redis_enabled }}
+        - name: SPRING_DATA_REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: {{ .Values.global.configMapName }}
+              key: SPRING_DATA_REDIS_HOST
+        {{- end }}
         
 {{- end -}}

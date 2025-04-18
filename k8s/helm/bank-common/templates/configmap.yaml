@@ -14,4 +14,5 @@ data:
   OTEL_LOGS_EXPORTER: {{ .Values.global.otelLogsExporter }}
   SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS: {{ .Values.global.kafkaBrokerURL }}
   SPRING_DATASOURCE_URL: {{ .Values.global.dataSourceUrl }}
+  SPRING_DATA_REDIS_HOST: {{ .Values.global.dataRedisHost }}
 {{- end -}}
