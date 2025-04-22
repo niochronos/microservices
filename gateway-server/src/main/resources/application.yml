@@ -9,6 +9,14 @@ spring:
 #    username: "guest"
 #    password: "guest"
   cloud:
+    kubernetes:
+      discovery:
+        enabled: true
+        all-namespaces: true
+    discovery:
+      client:
+        health-indicator:
+          enabled: false
     gateway:
       discovery:
         locator:
