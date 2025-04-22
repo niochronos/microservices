@@ -6,7 +6,6 @@ declare -a projects=(
     "../loans"
     "../cards"
     "../config-server"
-    "../eureka-server"
     "../gateway-server"
     "../message"
 )
