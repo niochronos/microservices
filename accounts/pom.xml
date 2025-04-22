@@ -163,7 +163,7 @@
 				<version>3.4.4</version>
 				<configuration>
 					<to>
-						<image>niochronos/${project.artifactId}:s17wm</image>
+						<image>niochronos/${project.artifactId}:s17v2wm</image>
 					</to>
 				</configuration>
 			</plugin>

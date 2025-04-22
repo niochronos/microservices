@@ -6,12 +6,11 @@ declare -a images=(
     "loans"
     "cards"
     "config-server"
-    "eureka-server"
     "gateway-server"
     "message"
 )
 
-declare tag=":s17wm"
+declare tag=":s17v2wm"
 
 # Loop through each images and run the commands
 for image in "${images[@]}"; do
