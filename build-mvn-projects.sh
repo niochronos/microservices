@@ -2,7 +2,8 @@
 
 # Array of project directories
 declare -a projects=(
-    "accounts"
+    "microservices-bom"
+    "../accounts"
     "../loans"
     "../cards"
     "../config-server"
