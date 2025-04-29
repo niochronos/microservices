@@ -37,13 +37,20 @@
 		<lombok.version>1.18.36</lombok.version>
 		<otel.version>2.11.0</otel.version>
 		<micrometer.version>1.14.5</micrometer.version>
+		<mysql-connector.version>9.1.0</mysql-connector.version>
+
+		<maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
 		<jib.version>3.4.4</jib.version>
 
 		<image.tag>s20</image.tag>
 	</properties>
 
 	<dependencies>
-		<!-- empty -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -83,6 +90,14 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -91,6 +106,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
 			</plugin>
 		</plugins>
 	</build>
