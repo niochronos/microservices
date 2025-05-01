@@ -1,10 +1,10 @@
 package com.oliinyk.yaroslav.loans.controller;
 
 import com.oliinyk.yaroslav.loans.constants.LoansConstants;
-import com.oliinyk.yaroslav.loans.dto.ErrorResponseDto;
+import com.oliinyk.yaroslav.common.dto.ErrorResponseDto;
 import com.oliinyk.yaroslav.loans.dto.LoansContactInfoDto;
 import com.oliinyk.yaroslav.loans.dto.LoansDto;
-import com.oliinyk.yaroslav.loans.dto.ResponseDto;
+import com.oliinyk.yaroslav.common.dto.ResponseDto;
 import com.oliinyk.yaroslav.loans.service.ILoansService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

@@ -1,6 +1,6 @@
 package com.oliinyk.yaroslav.loans.exception;
 
-import com.oliinyk.yaroslav.loans.dto.ErrorResponseDto;
+import com.oliinyk.yaroslav.common.dto.ErrorResponseDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;

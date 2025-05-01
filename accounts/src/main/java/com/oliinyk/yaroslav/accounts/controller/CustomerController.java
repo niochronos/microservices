@@ -1,7 +1,7 @@
 package com.oliinyk.yaroslav.accounts.controller;
 
 import com.oliinyk.yaroslav.accounts.dto.CustomerDetailsDto;
-import com.oliinyk.yaroslav.accounts.dto.ErrorResponseDto;
+import com.oliinyk.yaroslav.common.dto.ErrorResponseDto;
 import com.oliinyk.yaroslav.accounts.service.ICustomersService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

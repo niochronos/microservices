@@ -42,8 +42,14 @@
 		<maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
 		<jib.version>3.4.4</jib.version>
 
+		<common-lib.version>0.0.1-SNAPSHOT</common-lib.version>
+
 		<image.tag>s20</image.tag>
 	</properties>
+
+	<modules>
+		<module>common</module>
+	</modules>
 
 	<dependencies>
 		<dependency>
@@ -55,6 +61,12 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>com.oliinyk.yaroslav</groupId>
+				<artifactId>common</artifactId>
+				<version>${common-lib.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
